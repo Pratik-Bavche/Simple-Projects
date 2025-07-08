@@ -1,0 +1,23 @@
+.contact-content{
+    height: 395px;
+    margin-top: 32px;
+    padding: 10px;
+    height: 68vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-content::after{
+    content: "";
+    background-image: url('../Img/Typing.jpg');
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: inherit;
+    opacity: 0.25;
+    border-radius: 5px;
+    z-index: -1;
+}
+/* .contact-form{
+    
+} */

@@ -1,0 +1,16 @@
+@media screen and(max-width:1200px){
+    .navigation{
+        flex-direction: column;
+        margin-bottom: 23px;
+    }
+    .nav-left{
+        flex-direction: column;
+        /* display: flex; */
+        text-align: center;
+    }
+    .year-box{
+        top: 0px;
+        font-size: 11px;
+        display: flex;
+    }
+}
