@@ -1,0 +1,76 @@
+/* src/components/ChatWindow.css */
+
+.chat-window {
+  width: 95%;
+  max-width: 600px;
+  height: 75vh;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #c4d9ff;
+  transition: all 0.3s ease;
+}
+
+.chat-window:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  transform: scale(1.01);
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #f0f7ff, #dbe9ff);
+  scrollbar-width: none;
+}
+
+.chat-messages::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-input {
+  display: flex;
+  padding: 15px 20px;
+  background: #e8f0ff;
+  border-top: 1px solid #b9caff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 2px solid #b9d0ff;
+  border-radius: 30px;
+  outline: none;
+  background: white;
+  transition: 0.3s;
+}
+
+.chat-input input:focus {
+  border-color: #6b9eff;
+  box-shadow: 0 0 5px rgba(107, 158, 255, 0.5);
+}
+
+.chat-input button {
+  margin-left: 12px;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #6b9eff, #8ab5ff);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.chat-input button:hover {
+  background: linear-gradient(to right, #5a8eee, #76a7f7);
+}

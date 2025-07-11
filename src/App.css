@@ -1,0 +1,17 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #dbeeff, #f0f7ff);
+  height: 100vh;
+}
+
+
+  .chat-title {
+  margin: 0;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #010512;
+  }
