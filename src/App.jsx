@@ -1,44 +1,37 @@
+import AppName from "./components/AppName";
+import AddTodo from "./components/AddTodo";
+import TodoItems from "./components/TodoItems";
+import Message from "./components/Message";
 import "./App.css";
-import {createBrowserRouter} from "react-router-dom";
-import { RouterProvider } from "react-router-dom";
-import Navabar from "./components/Navabar";
-import Home from "./components/Home";
-import Paste from "./components/Paste";
-import ViewPaste from "./components/ViewPaste";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <div>
-        <Navabar />
-        <Home />
-      </div>
-    ),
-  },
-  {
-    path: "/pastes",
-    element: (
-      <div>
-        <Navabar />
-        <Paste />
-      </div>
-    ),
-  },
-  {
-    path: "/pastes/:id",
-    element: (
-      <div>
-        <Navabar />
-        <ViewPaste />
-      </div>
-    ),
-  },
-]);
+import { useState } from "react";
+
 function App() {
+  const [todoItems, setTodoItems] = useState([]);
+
+  const handleNewItem = (itemName, itemDueDate) => {
+    console.log(`New Item Added: ${itemName} Date:${itemDueDate}`);
+    const newTodoItems = [
+      ...todoItems,
+      { name: itemName, dueDate: itemDueDate },
+    ];
+    setTodoItems(newTodoItems);
+  };
+
+  const handleDeleteItem = (todoItemName) => {
+    const newTodoItems = todoItems.filter((item) => item.name !== todoItemName);
+    setTodoItems(newTodoItems);
+  };
+
   return (
-    <div>
-      <RouterProvider router={router}/>
-    </div>
+    <center className="todo-container">
+      <AppName />
+      <AddTodo onNewItem={handleNewItem} />
+      {todoItems.length === 0 && <Message></Message>}
+      <TodoItems
+        todoItems={todoItems}
+        onDeleteClick={handleDeleteItem}
+      ></TodoItems>
+    </center>
   );
 }
 
