@@ -1,23 +1,31 @@
-.name{
-    font-weight: 800;
-    font-size: 45px;
-    margin: 10px;
-    margin-bottom: 45px;
+.app-container{
+    display: flex;
 }
-
-input{
+.content{
     width: 100%;
 }
 
-.todo-item{
-    text-align: start;
+.sidebar{
+    min-height: 800px;
+    width: 80px;
 }
 
-.kg-row{
-    margin: 10px 5px;
+.post-card{
+    margin: 20px 50px;
+    min-width: 30rem;
 }
 
-.kg-btn{
-    min-width: 80px;
-    margin-left: 115px;
+.hashtag{
+    margin: 2px 3px;
+}
+
+.reaction{
+    /* width: 100%; */
+    margin: 15px 0 0 0;
+}
+
+.Post{
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 10%;
 }

@@ -1,37 +1,34 @@
-import AppName from "./components/AppName";
-import AddTodo from "./components/AddTodo";
-import TodoItems from "./components/TodoItems";
-import Message from "./components/Message";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SideBar from "./components/SideBar";
+import CreatePost from "./components/Form";
+import PostList from "./components/PostList";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import PostListProvider from "./store/Post-list-store";
 import { useState } from "react";
 
 function App() {
-  const [todoItems, setTodoItems] = useState([]);
-
-  const handleNewItem = (itemName, itemDueDate) => {
-    console.log(`New Item Added: ${itemName} Date:${itemDueDate}`);
-    const newTodoItems = [
-      ...todoItems,
-      { name: itemName, dueDate: itemDueDate },
-    ];
-    setTodoItems(newTodoItems);
-  };
-
-  const handleDeleteItem = (todoItemName) => {
-    const newTodoItems = todoItems.filter((item) => item.name !== todoItemName);
-    setTodoItems(newTodoItems);
-  };
+  const [selectedTab, setSelectedTab] = useState("Home");
 
   return (
-    <center className="todo-container">
-      <AppName />
-      <AddTodo onNewItem={handleNewItem} />
-      {todoItems.length === 0 && <Message></Message>}
-      <TodoItems
-        todoItems={todoItems}
-        onDeleteClick={handleDeleteItem}
-      ></TodoItems>
-    </center>
+    <PostListProvider>
+      <div className="app-container">
+        <SideBar
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        ></SideBar>
+        <div className="content">
+          <Header></Header>
+          {selectedTab === "Home" ? (
+            <PostList></PostList>
+          ) : (
+            <CreatePost></CreatePost>
+          )}
+          <Footer></Footer>
+        </div>
+      </div>
+    </PostListProvider>
   );
 }
 
