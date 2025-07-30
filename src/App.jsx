@@ -1,34 +1,26 @@
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import SideBar from "./components/SideBar";
-import CreatePost from "./components/Form";
-import PostList from "./components/PostList";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import PostListProvider from "./store/Post-list-store";
+import styles from "./App.module.css";
+import Buttons from "./components/Buttons";
+import Display from "./components/Display";
 import { useState } from "react";
-
 function App() {
-  const [selectedTab, setSelectedTab] = useState("Home");
+  const [calVal, setVal] = useState("");
+  const onButtonClick = (buttonText) => {
+    if (buttonText === "C") {
+      setVal("");
+    } else if (buttonText === "=") {
+      const result = eval(calVal);
+      setVal(result);
+    } else {
+      const newValue = calVal + buttonText;
+      setVal(newValue);
+    }
+  };
 
   return (
-    <PostListProvider>
-      <div className="app-container">
-        <SideBar
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-        ></SideBar>
-        <div className="content">
-          <Header></Header>
-          {selectedTab === "Home" ? (
-            <PostList></PostList>
-          ) : (
-            <CreatePost></CreatePost>
-          )}
-          <Footer></Footer>
-        </div>
-      </div>
-    </PostListProvider>
+    <div className={styles.cal}>
+      <Display disVal={calVal}></Display>
+      <Buttons onButtonClick={onButtonClick}></Buttons>
+    </div>
   );
 }
 
